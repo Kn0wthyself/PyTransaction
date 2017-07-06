@@ -100,3 +100,6 @@ ENV/
 
 .idea/*
 db.sqlite3
+
+# for vscode user
+.vscode/*
