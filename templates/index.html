@@ -1,105 +1,175 @@
 <!DOCTYPE html>
-<!-- saved from url=(0053)https://v4-alpha.getbootstrap.com/examples/jumbotron/ -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<!-- saved from url=(0060)https://v4-alpha.getbootstrap.com/examples/narrow-jumbotron/ -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="https://v4-alpha.getbootstrap.com/favicon.ico">
 
-    <title>Jumbotron Template for Bootstrap</title>
+    <title>pyTransaction登录</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+    <style type="text/css">
+        /* Space out content a bit */
 
-    <!-- Bootstrap core CSS -->
-    <link href="./Jumbotron Template for Bootstrap_files/bootstrap.min.css" rel="stylesheet">
+        body {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+        /* Everything but the jumbotron gets side spacing for mobile first views */
 
-    <!-- Custom styles for this template -->
-    <link href="./Jumbotron Template for Bootstrap_files/jumbotron.css" rel="stylesheet">
-  <style type="text/css">
-:root #content > #right > .dose > .dosesingle,
-:root #content > #center > .dose > .dosesingle
-{ display: none !important; }</style></head>
+        .header,
+        .marketing,
+        .footer {
+            padding-right: 1rem;
+            padding-left: 1rem;
+        }
+        /* Custom page header */
 
-  <body>
+        .header {
+            padding-bottom: 1rem;
+            border-bottom: .05rem solid #e5e5e5;
+        }
+        /* Make the masthead heading the same height as the navigation */
 
-    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand" href="https://v4-alpha.getbootstrap.com/examples/jumbotron/#">Navbar</a>
+        .header h3 {
+            margin-top: 0;
+            margin-bottom: 0;
+            line-height: 3rem;
+        }
+        /* Custom page footer */
 
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="https://v4-alpha.getbootstrap.com/examples/jumbotron/#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://v4-alpha.getbootstrap.com/examples/jumbotron/#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="https://v4-alpha.getbootstrap.com/examples/jumbotron/#">Disabled</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com/" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="https://v4-alpha.getbootstrap.com/examples/jumbotron/#">Action</a>
-              <a class="dropdown-item" href="https://v4-alpha.getbootstrap.com/examples/jumbotron/#">Another action</a>
-              <a class="dropdown-item" href="https://v4-alpha.getbootstrap.com/examples/jumbotron/#">Something else here</a>
-            </div>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
+        .footer {
+            padding-top: 1.5rem;
+            color: #777;
+            border-top: .05rem solid #e5e5e5;
+        }
+        /* Customize container */
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1 class="display-3">Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="https://v4-alpha.getbootstrap.com/examples/jumbotron/#" role="button">Learn more »</a></p>
-      </div>
-    </div>
+        @media (min-width: 48em) {
+            .container {
+                max-width: 46rem;
+            }
+        }
+
+        .container-narrow>hr {
+            margin: 2rem 0;
+        }
+        /* Main marketing message and sign up button */
+
+        .jumbotron {
+            text-align: center;
+            border-bottom: .05rem solid #e5e5e5;
+        }
+
+        .jumbotron .btn {
+            padding: .75rem 1.5rem;
+            font-size: 1.5rem;
+        }
+        /* Supporting marketing content */
+
+        .marketing {
+            margin: 3rem 0;
+        }
+
+        .marketing p+h4 {
+            margin-top: 1.5rem;
+        }
+        /* Responsive: Portrait tablets and up */
+
+        @media screen and (min-width: 48em) {
+            /* Remove the padding we set earlier */
+            .header,
+            .marketing,
+            .footer {
+                padding-right: 0;
+                padding-left: 0;
+            }
+            /* Space out the masthead */
+            .header {
+                margin-bottom: 2rem;
+            }
+            /* Remove the bottom border on the jumbotron for visual effect */
+            .jumbotron {
+                border-bottom: 0;
+            }
+        }
+    </style>>
+</head>
+
+<body>
 
     <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="https://v4-alpha.getbootstrap.com/examples/jumbotron/#" role="button">View details »</a></p>
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills float-right">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">登录</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">注册</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">pyTransaction</h3>
         </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="https://v4-alpha.getbootstrap.com/examples/jumbotron/#" role="button">View details »</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-secondary" href="https://v4-alpha.getbootstrap.com/examples/jumbotron/#" role="button">View details »</a></p>
+
+        <div class="jumbotron">
+            <div class="col-lg-6">
+            <h2 class="display-3">欢迎来到pyTransaction！</h2>
+            <p class="lead">这里是东半球最好的Python接单社区</p>
+            <p><a class="btn btn-lg btn-success" href="#" role="button">立刻注册</a></p>
+            <p><a href="#">已有账号？登录</a></p>
+            </div>
         </div>
-      </div>
 
-      <hr>
+        <div class="row marketing">
+            <div class="col-lg-6">
+                <h4>发单</h4>
+                <p>......</p>
 
-      <footer>
-        <p>© Company 2017</p>
-      </footer>
-    </div> <!-- /container -->
+                <h4>接单</h4>
+                <p>......</p>
+
+                <h4>众筹</h4>
+                <p>......</p>
+            </div>
+
+            <div class="col-lg-6">
+                <h4>交流</h4>
+                <p>......</p>
+
+                <h4>学习</h4>
+                <p>......</p>
+
+                <h4>投诉</h4>
+                <p>......</p>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© Company 2017</p>
+        </footer>
+
+    </div>
+    <!-- /container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="./Jumbotron Template for Bootstrap_files/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="./Jumbotron Template for Bootstrap_files/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="./Jumbotron Template for Bootstrap_files/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="./Jumbotron Template for Bootstrap_files/ie10-viewport-bug-workaround.js"></script>
-  
 
-</body></html>
+
+</body>
+
+</html>
