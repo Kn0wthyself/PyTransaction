@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,17 +20,8 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
         crossorigin="anonymous"></script>
-    <style type="text/css">
-        body {
-            padding-top: 6rem;
-        }
-    </style>
-    <style type="text/css">
-         :root #content>#right>.dose>.dosesingle,
-         :root #content>#center>.dose>.dosesingle {
-            display: none !important;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'join.css' %}">
+
 </head>
 
 <body>
@@ -39,12 +31,12 @@
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-        <a class="navbar-brand" href="#">pyTransaction</a>
+        <a class="navbar-brand" href="/user_admin">pyTransaction</a>
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">发布</a>

@@ -5,4 +5,8 @@
  - login.html登录页面
  - admin.html登陆后管理页面
 
-暂时把css和html放在一起，现在将css放在static文件夹不易管理，以后再分开。
+usage>>  
+```
+python manage.py collectstatic
+python manage.py runserver
+```
