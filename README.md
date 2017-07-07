@@ -49,8 +49,8 @@ api:<a href="http://localhost:8000/api/helloworld">hello world</a>
 
 ## to后端
 - 在api/models下建立各自模块需要的表
-- 在api/views下开发个子模块的api
-- 在api/serializer下建立个子模块的序列化器
+- 在api/views下开发各自模块的api
+- 在api/serializer下建立各自模块的序列化器
 
 ## to前端
 - 在templates/下开发各个模块的页面模板
