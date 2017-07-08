@@ -80,8 +80,14 @@ WSGI_APPLICATION = 'py_transaction.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'pyt',
+        'USER': 'pyt',
+        'PASSWORD': 'pyt',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
