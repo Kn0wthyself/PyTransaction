@@ -64,7 +64,8 @@ api:<a href="http://localhost:8000/api/helloworld">hello world</a>
 - 4、对pyt@localhost开放访问数据库pyt中所有表的所有权限 grant all privileges on pyt.* to pyt@localhost;
 - 5、刷新权限 flush privileges;
 - 6、在py_transaction/settings.py 的DATABASES下配置MySql数据库
-```
+
+```python
         DATABASES = {
             'default': {
                 #'ENGINE': 'django.db.backends.sqlite3',
