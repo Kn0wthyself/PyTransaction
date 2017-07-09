@@ -57,6 +57,11 @@ api:<a href="http://localhost:8000/api/helloworld">hello world</a>
 - 在static/下存放js、css等静态文件
 - 在website/views下建立每个页面的视图
 
+如果`static`下静态文件发生变化，执行
+```
+python manage.py collectstatic
+```
+
 ## 数据库部署
 - 1、先在mysql数据库建立数据库    create database pyt;
 - 2、设置为当前使用的数据库 use pyt

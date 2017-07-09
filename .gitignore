@@ -104,3 +104,6 @@ db.sqlite3
 
 # for vscode user
 .vscode/*
+
+# for django staticfiles folder
+staticfiles/

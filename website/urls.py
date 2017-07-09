@@ -23,5 +23,6 @@ urlpatterns = [
     url('login/$', views.login.as_view()),
     url('user_admin/$', views.admin.as_view()),
     url('join/$', views.join.as_view()),
+    url('profile/$', views.profile.as_view()),
     url(r'^$', views.index.as_view()),
 ]
