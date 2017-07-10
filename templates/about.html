@@ -1,0 +1,50 @@
+{% extends 'base1.html' %} {% load static %} 
+{% block script %}
+<link rel="stylesheet" type="text/css" href="{% static 'join.css' %}"> 
+{% endblock %}
+{% block nav-left %}
+<li class="nav-item active">
+    <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="#">发布</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="#">接单</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="#">交流</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="/about">关于</a>
+</li>
+{% endblock %}
+{% block nav-right %}
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">个人信息</a>
+    <div class="dropdown-menu" aria-labelledby="dropdown01">
+        <a class="dropdown-item" href="/profile">修改个人信息</a>
+        <a class="dropdown-item" href="#">登出</a>
+    </div>
+</li>
+{% endblock %}
+{% block search %}
+<form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+</form>
+{% endblock %}
+{% block content %}
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-8">
+            <p>一些介绍</p>
+        </div>
+        <div class="col-md-4">
+            <p>一些介绍</p>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
