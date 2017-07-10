@@ -20,6 +20,7 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
         crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
 </head>
 
@@ -42,21 +43,46 @@
     </nav>
 
     <div class="container">
-        <form class="form-signin">
+        <form id="form" class="form-signin" action="/api/login" method="post">
             <h2 class="form-signin-heading">登录</h2>
             <label for="email" class="sr-only">电子邮件</label>
-            <input type="email" id="email" class="form-control" placeholder="电子邮件" required autofocus>
+            <input type="email" name="email" class="form-control" placeholder="电子邮件" required autofocus>
             <label for="password" class="sr-only">密码</label>
-            <input type="password" id="password" class="form-control" placeholder="密码" required>
+            <input type="password" name="password" class="form-control" placeholder="密码" required>
             <div class="checkbox">
                 <label>
             <input type="checkbox" value="remember-me">记住我
           </label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+            <button id="btn" class="btn btn-lg btn-primary btn-block" type="button">登录</button>
         </form>
+        <div id="result"></div>
         <hr>
-
+        <script type='text/javascript'>
+            $(function() {
+                $('.btn').click(function() {
+                    var $result = $('#result');
+                    var $email = $('input[name="email"]').val();
+                    var $password = $('input[name="password"]').val();
+                    console.log($('form').serialize());
+                    $.ajax({
+                        url: '/api/login',
+                        data: $('form').serialize(),
+                        //data: {'email': $email, 'password': $password},
+                        type: 'POST',
+                        dataType: 'json'
+                    }).done(function(data) {
+                        if (!data.r) {
+                            console.log(data)
+                            $result.html(data.rs);
+                        } else {
+                            console.log(data)
+                            $result.html(data.error);
+                        }
+                    });
+                });
+            });
+        </script>
         <footer>
             <p>© Company 2017</p>
         </footer>

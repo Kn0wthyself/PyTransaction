@@ -24,6 +24,6 @@ urlpatterns = [
     url('user_admin/$', views.admin.as_view()),
     url('join/$', views.join.as_view()),
     url('profile/$', views.profile.as_view()),
-    url('about/$', views.about.as_view()),
+    url('about', views.about.as_view()),
     url(r'^$', views.index.as_view()),
 ]
