@@ -4,3 +4,4 @@ djangorestframework-jwt==1.11.0
 PyJWT==1.5.2
 PyMySQL==0.7.11
 pytz==2017.2
+django-cors-headers==2.1.0
