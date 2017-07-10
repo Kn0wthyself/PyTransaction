@@ -6,6 +6,7 @@
 - `py_transaction`: 项目配置目录
 - `static`: 静态文件存放目录
 - `templates`: 模板存放目录
+- `docs`: 基于swagger编写的api文档
 
 ## 说明
 目前暂停前后端在同一项目中开发，后端提供api，前端负责页面模板的开发，由django提供路由功能，
@@ -51,8 +52,42 @@ api:<a href="http://localhost:8000/api/helloworld">hello world</a>
 - 在api/models下建立各自模块需要的表
 - 在api/views下开发各自模块的api
 - 在api/serializer下建立各自模块的序列化器
+- 在docs/api.yml中编写api文档
+- 在浏览器中打开docs/dist/index.html中查看api文档
 
 ## to前端
 - 在templates/下开发各个模块的页面模板
 - 在static/下存放js、css等静态文件
 - 在website/views下建立每个页面的视图
+- 在浏览器中打开docs/dist/index.html中查看api文档
+
+如果`static`下静态文件发生变化，执行
+```
+python manage.py collectstatic
+```
+
+## 数据库部署
+- 1、先在mysql数据库建立数据库    create database pyt;
+- 2、设置为当前使用的数据库 use pyt
+- 3、创建django访问pyt数据库的账号，并在数据库mysql的表user中检查 create user pyt@localhost identified by 'pyt';
+- 4、对pyt@localhost开放访问数据库pyt中所有表的所有权限 grant all privileges on pyt.* to pyt@localhost;
+- 5、刷新权限 flush privileges;
+- 6、在py_transaction/settings.py 的DATABASES下配置MySql数据库
+
+```python
+        DATABASES = {
+            'default': {
+                #'ENGINE': 'django.db.backends.sqlite3',
+                #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+                'ENGINE': 'django.db.backends.mysql',
+                'NAME': 'pyt',
+                'USER': 'pyt',
+                'PASSWORD': 'pyt',
+                'HOST': 'localhost',
+                'PORT': '3306',
+            }
+        }
+```
+
+- 7、 python manage.py makemigrations
+- 8、 python manage.py migrate

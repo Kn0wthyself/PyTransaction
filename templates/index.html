@@ -37,30 +37,29 @@
                             <a class="nav-link active" href="/index">Home</a>
                             <a class="nav-link" href="/login">登录</a>
                             <a class="nav-link" href="/join">注册</a>
+                            <a class="nav-link" href="/about">关于</a>
                         </nav>
                     </div>
                 </div>
 
                 <div class="inner cover">
                     <div class="row">
-                        <div class="col-md-6">
-                            <h1 class="cover-heading">pyTransaction</h1>
-                            <br/>
-                            <p>这可能是东半球最好的Python接单社区</p>
+                        <div class="col-md-6 text-center">
+                            <div class='introduction'>
+                                <h1 class="cover-heading">pyTransaction</h1>
+                                <br/>
+                                <p>这可能是东半球最好的Python接单社区</p>
+                            </div>
                         </div>
                         <div class="col-md-6 col-md-offset-2">
-                            <form role="form">
+                            <form role="form" action="/join">
                                 <div class="form-group">
                                     <label for="username">用户名</label>
-                                    <input type="email" class="form-control" id="username" placeholder="username">
+                                    <input type="text" class="form-control" id="username" placeholder="username" required/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">电子邮件</label>
-                                    <input type="email" class="form-control" id="email" placeholder="email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">密码</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                    <label for="password">密码</label>
+                                    <input type="password" class="form-control" id="password" placeholder="password">
                                 </div>
                                 <button type="submit" class="btn btn-default">注册</button>
                             </form>

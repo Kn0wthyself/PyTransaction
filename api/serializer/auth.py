@@ -50,12 +50,12 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('username', 'email', 'password')
 
-
     def save(self, **kwargs):
         data = self.data
         user = User.objects.create(username=data.get('username'),
-                                   password=data.get('password'),
                                    email=data.get('email'))
+        user.set_password(data.get('password'))
+        user.save()
         Profile.objects.create(user=user,
                                nickname=data.get('username'),
                                mobile=data.get('username'),
