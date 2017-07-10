@@ -1,0 +1,95 @@
+swagger: "2.0"
+info:
+  title: PyTransaction API docs
+  description: API description with swagger
+  version: 1.0
+
+host: localhost:8000
+basePath: /api/v1
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+
+paths:
+  /register:
+    post:
+      summary: 用户注册
+      description: 用户注册
+      parameters:
+        - in: body
+          description: 用户注册信息
+          name: body
+          schema:
+            type: object
+            required:
+              - username
+              - email
+              - password
+            properties:
+              username:
+                type: string
+              email:
+                type: string
+              password:
+                type: string
+      responses:
+        200:
+          description: 注册成功
+          schema:
+            type: object
+            properties:
+              msg:
+                type: string
+        400:
+          description: 注册失败
+          schema:
+            type: object
+            properties:
+              error_msg:
+                type: array
+                items:
+                  type: string
+      tags:
+        - user
+
+  /login:
+    post:
+      summary: 用户登录
+      description: 用户登录
+      parameters:
+        - in: body
+          description: 用户登录所需信息
+          name: body
+          schema:
+            type: object
+            required:
+              - username
+              - password
+            properties:
+              username:
+                type: string
+              password:
+                type: string
+      responses:
+        200:
+          description: 登录成功
+          properties:
+            token:
+              type: string
+        400:
+          description: 登录失败
+      tags:
+        - user
+
+securityDefinitions:
+  APIKeyHeader:
+    type: apiKey
+    in: header
+    name: Authorization
+
+tags:
+  - name: user
+    description: 用户相关api
