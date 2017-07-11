@@ -1,6 +1,8 @@
 {% extends 'base1.html' %} {% load static %} 
 {% block script %}
-<link rel="stylesheet" type="text/css" href="{% static 'join.css' %}"> {% endblock %} 
+<link rel="stylesheet" type="text/css" href="{% static 'join.css' %}">
+<script src="{% static 'join.js' %}"></script>
+{% endblock %} 
 {% block nav-left %}
 <li class="nav-item active">
     <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
@@ -29,7 +31,7 @@
     </div>
     <div class="row">
         <div class="col-md-8">
-            <form role="form" action="/user_admin">
+            <form role="form" action="/join" method="POST">
                 <div class="form-group">
                     <label for="username">用户名</label>
                     <input type="text" class="form-control" id="username" placeholder="username" required/>
@@ -40,22 +42,22 @@
                 </div>
                 <div class="form-group">
                     <label for="mobile">手机号码</label>
-                    <input type="number" class="form-control" id="mobile" placeholder="mobile" required/>
+                    <input type="number" class="form-control" id="mobile" placeholder="mobile">
                     <button type="" class="btn btn-primary">获取手机验证码</button>
                 </div>
                 <div class="form-group">
                     <label for="ver-code">手机验证码</label>
-                    <input type="number" class="form-control" id="ver-code" placeholder="ver-code" required/>
+                    <input type="number" class="form-control" id="ver-code" placeholder="ver-code">
                 </div>
                 <div class="form-group">
                     <label for="password">密码</label>
                     <input type="password" class="form-control" id="password" placeholder="password" required/>
                 </div>
-                <div class="form-group">
+                <!--<div class="form-group">
                     <label for="password">确认密码</label>
                     <input type="password" class="form-control" id="password" placeholder="password" required/>
-                </div>
-                <button type="submit" class="btn btn-default">注册</button>
+                </div>-->
+                <button type="submit" class="btn btn-default" id="register">注册</button>
             </form>
         </div>
         <div class="col-md-4">

@@ -107,3 +107,10 @@ db.sqlite3
 
 # for django staticfiles folder
 staticfiles/
+
+# for ESlint configuration files
+node_modules/*
+.eslintrc.js
+package*.json
+package-lock.json
+=*
