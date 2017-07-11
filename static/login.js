@@ -1,12 +1,10 @@
 $(function () {
-  $('#register').click(function () {
+  $('#login').click(function () {
     var $username = $('#username').val()
-    var $email = $('#email').val()
     var $password = $('#password').val()
-
     $.ajax({
-      url: '/api/v1/register',
-      data: JSON.stringify({username: $username, email: $email, password: $password}),
+      url: '/api/v1/login',
+      data: JSON.stringify({username: $username, password: $password}),
       contentType: 'application/json',
       type: 'POST',
       dataType: 'json',
