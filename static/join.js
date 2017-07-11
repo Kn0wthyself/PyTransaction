@@ -1,5 +1,6 @@
 $(function () {
-  $('#register').click(function () {
+  $('#register').click(function (event) {
+    event.preventDefault()
     var $username = $('#username').val()
     var $email = $('#email').val()
     var $password = $('#password').val()
