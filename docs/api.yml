@@ -84,6 +84,40 @@ paths:
       tags:
         - user
 
+  /modify-password:
+    post:
+      summary: 修改密码
+      description: 修改密码
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - in: body
+          description: 修改密码
+          name: body
+          schema:
+            type: object
+            required:
+              - old_password
+              - new_password
+            properties:
+              old_password:
+                type: string
+              new_password:
+                type: string
+      responses:
+        200:
+          description: 修改成功
+          properties:
+            msg:
+              type: string
+        400:
+          description: 登录失败
+          properties:
+            error_msg:
+              type: string
+      tags:
+        - user
+
 securityDefinitions:
   APIKeyHeader:
     type: apiKey
