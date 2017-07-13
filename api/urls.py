@@ -22,6 +22,6 @@ urlpatterns = [
     url('helloworld$', views.HelloWorldAPI.as_view()),
     url('v1/login$', views.LoginView.as_view()),
     url('v1/register$', views.RegisterAPI.as_view()),
-    url('v1/modify-passwd$', views.ModifyPasswordAPI.as_view()),
+    url('v1/modify-password$', views.ModifyPasswordAPI.as_view()),
     url('v1/verify-token$', verify_jwt_token),
 ]

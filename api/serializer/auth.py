@@ -44,15 +44,13 @@ class JSONWebTokenSerializer(Serializer):
             raise serializers.ValidationError(msg)
 
 
-
-
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
         fields = ('username', 'email', 'password')
 
-    def create(self, validated_data):
+    def save(self, **kwargs):
         data = self.data
         user = User.objects.create(username=data.get('username'),
                                    email=data.get('email'))
@@ -63,8 +61,3 @@ class UserSerializer(serializers.ModelSerializer):
                                mobile=data.get('username'),
                                email=data.get('email'))
         return user
-
-
-
-
-
