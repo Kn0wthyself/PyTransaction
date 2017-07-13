@@ -52,7 +52,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('username', 'email', 'password')
 
-    def save(self, **kwargs):
+    def create(self, validated_data):
         data = self.data
         user = User.objects.create(username=data.get('username'),
                                    email=data.get('email'))
@@ -64,35 +64,7 @@ class UserSerializer(serializers.ModelSerializer):
                                email=data.get('email'))
         return user
 
-class PasswordSerializer(Serializer):
 
-    def __init__(self, *args, **kwargs):
-        super(PasswordSerializer, self).__init__(*args, **kwargs)
-
-        self.fields['username'] = serializers.CharField()
-        self.fields['password'] = PasswordField(write_only=True)
-
-    def validate(self, attrs):
-        username = attrs.get('username')
-        try:
-            profile = Profile.objects.get(Q(nickname=username) |
-                                          Q(email=username) |
-                                          Q(mobile=username))
-            user = profile.user
-        except Profile.DoesNotExist:
-            try:
-                user = User.objects.get(username=username)
-            except User.DoesNotExist:
-                msg = _('check your username is correct?')
-                raise serializers.ValidationError(msg)
-        print(attrs.get('password'))
-        user.set_password(attrs.get('password'))
-        user.save()
-        if user.check_password(attrs.get('password')):
-            return {'msg': 'success'}
-        else:
-            msg = _('password change failed.')
-            raise serializers.ValidationError(msg)
 
 
 
