@@ -19,8 +19,9 @@ from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token
 from api import views
 
 urlpatterns = [
-    url('helloworld', views.HelloWorldAPI.as_view()),
-    url('login/', views.LoginView.as_view()),
-    url('register/', views.RegisterAPI.as_view()),
-    url('verify-token', verify_jwt_token),
+    url('helloworld$', views.HelloWorldAPI.as_view()),
+    url('v1/login$', views.LoginView.as_view()),
+    url('v1/register$', views.RegisterAPI.as_view()),
+    url('v1/modify-password$', views.ModifyPasswordAPI.as_view()),
+    url('v1/verify-token$', verify_jwt_token),
 ]
