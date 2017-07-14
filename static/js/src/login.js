@@ -10,13 +10,16 @@ $(function () {
       type: 'POST',
       dataType: 'json',
       success: function (msg) {
+        console.log('login success!')
         console.log(msg)
-        console.log('hello!')
+        console.log(msg['token'])
+        sessionStorage.setItem('jwt', msg['token'])
+        console.log(sessionStorage.getItem('jwt'))
+        // location.assign('/user_admin')
       },
       error: function (error_msg) {
         console.log(error_msg)
         console.log('wrong!')
-        // console.log(JSON.stringify({username: $username, email: $email, password: $password}))
       }
     })
   })
