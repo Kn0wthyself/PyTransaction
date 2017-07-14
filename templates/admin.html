@@ -1,0 +1,70 @@
+{% extends 'base1.html' %} {% load static %}
+{% block script %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/admin.css' %}"> 
+{% endblock %}
+
+{% block nav-left %}
+<li class="nav-item active">
+  <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="#">发布</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="#">接单</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="#">交流</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/about">关于</a>
+</li>
+{% endblock %}
+
+{% block nav-right %}
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">个人信息</a>
+    <div class="dropdown-menu" aria-labelledby="dropdown01">
+      <a class="dropdown-item" href="/profile">修改个人信息</a>
+      <a class="dropdown-item" href="#">登出</a>
+    </div>
+  </li>
+{% endblock %}
+
+{% block search %}
+<form class="form-inline my-2 my-lg-0">
+  <input class="form-control mr-sm-2" type="text" placeholder="Search">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+</form>
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-3">Hello, world!</h1>
+    <p>This is pyTransaction！</p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">了解更多>></a></p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h2>发布订单</h2>
+      <p>发起订单
+      </p>
+      <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+    </div>
+    <div class="col-md-4">
+      <h2>接受订单</h2>
+      <p>接受订单
+      </p>
+      <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+    </div>
+    <div class="col-md-4">
+      <h2>投诉</h2>
+      <p>我要投诉！</p>
+      <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+    </div>
+  </div>
+{% endblock %}
