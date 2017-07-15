@@ -118,6 +118,26 @@ paths:
       tags:
         - user
 
+  /basic-info:
+    get:
+      summary: 获取信息
+      description: 获取信息
+      security:
+        - APIKeyHeader: []
+      responses:
+        200:
+          description: 获取成功
+          properties:
+            msg:
+              type: string
+        400:
+          description: 获取失败
+          properties:
+            error_msg:
+              type: string
+      tags:
+        - user
+
 securityDefinitions:
   APIKeyHeader:
     type: apiKey
