@@ -17,3 +17,5 @@ python manage.py runserver
 
 TODO:
  - 确认密码
+ - 权限控制
+ - 进一步模块化

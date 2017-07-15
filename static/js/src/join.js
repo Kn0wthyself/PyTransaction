@@ -20,6 +20,8 @@ $(function () {
         console.log('wrong!')
         // console.log(JSON.stringify({username: $username, email: $email, password: $password}))
       }
+    }).done(function () {
+      location.assign('/login')
     })
   })
 })

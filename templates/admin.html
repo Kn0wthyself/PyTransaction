@@ -1,6 +1,7 @@
 {% extends 'base1.html' %} {% load static %}
 {% block script %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/admin.css' %}"> 
+<script src="{% static 'js/src/logout.js' %}"></script>
 {% endblock %}
 
 {% block nav-left %}
@@ -26,7 +27,7 @@
     <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">个人信息</a>
     <div class="dropdown-menu" aria-labelledby="dropdown01">
       <a class="dropdown-item" href="/profile">修改个人信息</a>
-      <a class="dropdown-item" href="#">登出</a>
+      <a class="dropdown-item" id="logout">登出</a>
     </div>
   </li>
 {% endblock %}

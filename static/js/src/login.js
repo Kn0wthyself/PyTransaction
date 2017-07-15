@@ -21,6 +21,8 @@ $(function () {
         console.log(error_msg)
         console.log('wrong!')
       }
+    }).done(function () {
+      location.assign('/profile')
     })
   })
 })
