@@ -1,8 +1,12 @@
-{% extends 'base1.html' %} {% load static %}
-{% block script %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/join.css' %}"> 
-{% endblock %} 
-{% block nav-left %}
+{% extends 'base1.html' %} {% load static %} {% block script %}
+<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+    crossorigin="anonymous"></script> -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/join.css' %}">
+<script src="{% static 'js/src/modify-password.js' %}"></script>
+<script src="{% static 'js/src/profile-display.js' %}"></script>
+<script src="{% static 'js/src/logout.js' %}"></script>
+
+{% endblock %} {% block nav-left %}
 <li class="nav-item active">
     <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
 </li>
@@ -18,24 +22,20 @@
 <li class="nav-item">
     <a class="nav-link" href="/about">关于</a>
 </li>
-{% endblock %}
-{% block nav-right %}
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">个人信息</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="/profile">修改个人信息</a>
-            <a class="dropdown-item" href="#">登出</a>
-        </div>
-    </li>
-{% endblock %}
-{% block search %}
+{% endblock %} {% block nav-right %}
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">个人信息</a>
+    <div class="dropdown-menu" aria-labelledby="dropdown01">
+        <a class="dropdown-item" href="/profile">修改个人信息</a>
+        <a class="dropdown-item" id="logout">登出</a>
+    </div>
+</li>
+{% endblock %} {% block search %}
 <form class="form-inline my-2 my-lg-0">
     <input class="form-control mr-sm-2" type="text" placeholder="Search">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
 </form>
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 <div class="container">
 
     <div class="row">
@@ -108,12 +108,12 @@
                 <h1 class="display-5"><a name="password_info">修改密码</a></h1>
                 <form role="form">
                     <div class="form-group">
-                        <label for="password">修改密码</label>
-                        <input type="password" class="form-control" id="password" placeholder="password" required/>
-                        <label for="password">确认密码</label>
-                        <input type="password" class="form-control" id="password" placeholder="password" required/>
+                        <label for="old-password">输入旧密码</label>
+                        <input type="password" class="form-control" id="old-password" placeholder="旧密码" required/>
+                        <label for="new-password">输入新密码</label>
+                        <input type="password" class="form-control" id="new-password" placeholder="新密码" required/>
                     </div>
-                    <button type="submit" class="btn btn-primary">保存修改</button>
+                    <button class="btn btn-primary" id="change-password">保存修改</button>
                 </form>
             </div>
             <hr/>
@@ -143,4 +143,4 @@
         </div>
 
     </div>
-{% endblock %}
+    {% endblock %}
