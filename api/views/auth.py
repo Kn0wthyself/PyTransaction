@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
-from api.serializer.auth import JSONWebTokenSerializer, UserSerializer
+from api.serializer.auth import JSONWebTokenSerializer, UserSerializer, PostTagSerializer
 
 
 class LoginView(JSONWebTokenAPIView):
@@ -39,3 +39,15 @@ class RegisterAPI(APIView):
             return Response(data={'msg': 'success'}, status=200)
         return Response(data={'error_msg': serializer.errors}, status=400)
 
+
+class CreatePostTagAPI(APIView):
+
+    @classmethod
+    def post(cls, request):
+        data = request.data
+        data['author'] = request.user
+        serializer = PostTagSerializer(data=data)
+        if serializer.is_valid():
+            posttag = serializer.save()
+            return Response(data={'msg': 'success'}, status=200)
+        return Response(data={'error_msg': serializer.errors}, status=400)

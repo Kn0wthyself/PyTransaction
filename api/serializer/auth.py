@@ -7,6 +7,8 @@ from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
 
 from api.models import Profile
+from api.models.transaction import Order
+from api.models.post import Post, PostTag
 
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
@@ -61,3 +63,36 @@ class UserSerializer(serializers.ModelSerializer):
                                mobile=data.get('username'),
                                email=data.get('email'))
         return user
+
+class PostTagSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Post
+        fields = ('author', 'title', 'content', 'reward', 'contact_mobile', 'status')
+
+    def save(self, **kwargs):
+        data = self.data
+        posttag = PostTag.objects.create(author=data.get('author'),
+                                         title=data.get('title'),
+                                         content=data.get('content'),
+                                         reward=data.get('reward'),
+                                         contact_mobile=data.get('contact_mobile'),
+                                         status=data.get('status'),
+                                         tag=data.get('tag'))
+        return posttag
+
+
+class OrderSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Order
+        fields = ('amount', 'pay_user', 'title', 'status', 'post')
+
+    def save(self, **kwargs):
+        data = self.data
+        order = Order.objects.create(amount=data.get('amount'),
+                                     pay_user=data.get('pay_user'),
+                                     receive_user=data.get('receive_user'),
+                                     title=data.get('title'),
+                                     status=data.get('status'),
+                                     post=data.get('post'))

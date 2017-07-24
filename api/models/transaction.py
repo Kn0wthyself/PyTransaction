@@ -15,4 +15,4 @@ class Order(BaseModel):
     receive_user = models.ForeignKey(User, verbose_name='收款人')
     title = models.CharField('商品名称', max_length=64)
     status = models.IntegerField('订单状态', choices=STATUS)
-    post = models.ForeignKey(Post, '关联帖子')
+    post = models.ForeignKey(Post, verbose_name='关联帖子')

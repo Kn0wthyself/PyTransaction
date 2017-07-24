@@ -118,6 +118,50 @@ paths:
       tags:
         - user
 
+  /post-posttag:
+    post:
+      summary: 发布需求帖
+      description: 发布需求帖
+      parameters:
+        - in: body
+          description: 发布需求帖
+          name: body
+          schema:
+            type: object
+            required:
+              - title
+              - content
+              - reward
+              - contact_mobile
+              - status
+              - tag
+            properties:
+              title:
+                type: string
+              content:
+                type: string
+              reward:
+                type: integer
+              contact_mobile:
+                type: string
+              status:
+                type: integer
+              tag:
+                type: string
+      responses:
+        200:
+          description: 发表成功
+          properties:
+            msg:
+              type: string
+        400:
+          description: 发表失败
+          properties:
+            error_msg:
+              type: string
+      tags:
+        - post
+
 securityDefinitions:
   APIKeyHeader:
     type: apiKey
@@ -127,3 +171,6 @@ securityDefinitions:
 tags:
   - name: user
     description: 用户相关api
+
+  - name: post
+    description: 需求帖相关api
