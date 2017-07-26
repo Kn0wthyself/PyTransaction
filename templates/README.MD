@@ -1,6 +1,6 @@
-使用bootstrap CDN  
+使用bootstrap CDN + jquery
 
- - index.html未登录时的首页，效仿github，点击注册后跳转到join.html填写详细信息
+ - index.html 首页
  - join.html 注册页面
  - login.html登录页面
  - admin.html登陆后管理页面
@@ -12,6 +12,10 @@ python manage.py collectstatic
 python manage.py runserver
 ```
 
-TODO：  
- - 修改admin.html
- - 代码重用
+注：  
+ - 修改密码在`/profile`
+
+TODO:
+ - 确认密码
+ - 权限控制
+ - 进一步模块化

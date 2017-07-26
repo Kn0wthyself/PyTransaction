@@ -118,6 +118,17 @@ paths:
       tags:
         - user
 
+<<<<<<< HEAD
+  /basic-info:
+    get:
+      summary: 获取信息
+      description: 获取信息
+      security:
+        - APIKeyHeader: []
+      responses:
+        200:
+          description: 获取成功
+=======
   /post-posttag:
     post:
       summary: 发布需求帖
@@ -151,16 +162,25 @@ paths:
       responses:
         200:
           description: 发表成功
+>>>>>>> 49d401017ebe1c0cd90340eaf4bb151336dbf441
           properties:
             msg:
               type: string
         400:
+<<<<<<< HEAD
+          description: 获取失败
+=======
           description: 发表失败
+>>>>>>> 49d401017ebe1c0cd90340eaf4bb151336dbf441
           properties:
             error_msg:
               type: string
       tags:
+<<<<<<< HEAD
+        - user
+=======
         - post
+>>>>>>> 49d401017ebe1c0cd90340eaf4bb151336dbf441
 
 securityDefinitions:
   APIKeyHeader:
