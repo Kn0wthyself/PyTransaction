@@ -23,6 +23,7 @@ urlpatterns = [
     url('v1/login$', views.LoginView.as_view()),
     url('v1/register$', views.RegisterAPI.as_view()),
     url('v1/post-posttag$', views.auth.CreatePostTagAPI.as_view()),
+    url('v1/basic-info$', views.BasicInfoAPI.as_view()),
     url('v1/modify-password$', views.ModifyPasswordAPI.as_view()),
     url('v1/verify-token$', verify_jwt_token),
 ]
