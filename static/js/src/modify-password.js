@@ -12,7 +12,8 @@ $(function () {
       headers: {'Authorization': 'jwt' + ' ' + sessionStorage.getItem('jwt')},
       success: function (msg) {
         console.log('modify password success!')
-        // console.log(sessionStorage.getItem('jwt')) // for debug
+        sessionStorage.removeItem('jwt')
+        location.assign('/login')
       },
       error: function (error_msg) {
         console.log(error_msg)
