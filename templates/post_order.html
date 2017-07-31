@@ -1,0 +1,74 @@
+{% extends 'base1.html' %} {% load static %} {% block script %}
+<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+    crossorigin="anonymous"></script> -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/join.css' %}">
+<script src="{% static 'js/src/not_logined.js' %}"></script>
+<script src="{% static 'js/src/post_order.js' %}"></script>
+<script src="{% static 'js/src/logout.js' %}"></script>
+{% endblock %} {% block nav-left %}
+<li class="nav-item">
+    <a class="nav-link" href="/post_order">发布</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="#">接单</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="#">交流</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="/about">关于</a>
+</li>
+{% endblock %} {% block nav-right %}
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">个人信息</a>
+    <div class="dropdown-menu" aria-labelledby="dropdown01">
+        <a class="dropdown-item" href="/profile">修改个人信息</a>
+        <a class="dropdown-item" id="logout">登出</a>
+    </div>
+</li>
+{% endblock %} {% block search %}
+<form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+</form>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div>
+        <h1 class="display-5">发起订单</h1>
+        <p>填写订单信息</p>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <form role="form">{% csrf_token %}
+                <div class="form-group">
+                    <label for="title">标题</label>
+                    <input autofocus type="text" class="form-control" id="title" placeholder="title" required/>
+                </div>
+                <div class="form-group">
+                    <label for="content">内容</label>
+                    <textarea rows=5 class="form-control" id="content" placeholder="content" required/></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="payment">报酬</label>
+                    <textarea class="form-control" id="payment" placeholder="payment" required/></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="contect">联系方式</label>
+                    <input type="text" class="form-control" id="contect" placeholder="contect" required/>
+                </div>
+                <div class="form-group">
+                    <label for="tag">标签</label>
+                    <input type="text" class="form-control" id="tag" placeholder="tag" />
+                </div>
+                <button class="btn btn-default" id="post_order">提交</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <h2>注意！</h2>
+            <p>这里可以放置一些提示信息
+            </p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+        </div>
+    </div>
+{% endblock %}
