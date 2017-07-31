@@ -9,10 +9,10 @@ $(function () {
       contentType: 'application/json',
       type: 'POST',
       dataType: 'json',
-      headers: {'Authorization': 'jwt' + ' ' + sessionStorage.getItem('jwt')},
+      headers: {'Authorization': 'jwt' + ' ' + localStorage.getItem('jwt')},
       success: function (msg) {
         console.log('modify password success!')
-        sessionStorage.removeItem('jwt')
+        localStorage.removeItem('jwt')
         location.assign('/login')
       },
       error: function (error_msg) {

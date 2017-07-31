@@ -13,8 +13,8 @@ $(function () {
         console.log('login success!')
         console.log(msg)
         console.log(msg['token'])
-        sessionStorage.setItem('jwt', msg['token'])
-        console.log(sessionStorage.getItem('jwt'))
+        localStorage.setItem('jwt', msg['token'])
+        console.log(localStorage.getItem('jwt'))
         // location.assign('/user_admin')
       },
       error: function (error_msg) {
