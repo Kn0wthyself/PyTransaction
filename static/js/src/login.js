@@ -20,6 +20,7 @@ $(function () {
       error: function (error_msg) {
         console.log(error_msg)
         console.log('wrong!')
+        alert('密码或账号错误')
       }
     }).done(function () {
       location.assign('/profile')
