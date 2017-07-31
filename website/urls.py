@@ -25,5 +25,6 @@ urlpatterns = [
     url('profile', views.profile.as_view()),
     url('about', views.about.as_view()),
     url('order_list', views.order_list.as_view()),
+    url('post_order', views.post_order.as_view()),
     url(r'^$', views.index.as_view()),
 ]
