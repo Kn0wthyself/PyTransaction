@@ -11,15 +11,17 @@ $(function () {
       dataType: 'json',
       success: function (msg) {
         console.log('login success!')
-        console.log(msg)
-        console.log(msg['token'])
-        sessionStorage.setItem('jwt', msg['token'])
-        console.log(sessionStorage.getItem('jwt'))
+        // console.log(msg)
+        // console.log(msg['token'])
+        localStorage.setItem('jwt', msg['token'])
+        console.log(localStorage.getItem('jwt'))
+        localStorage.setItem('username', $username)
         // location.assign('/user_admin')
       },
       error: function (error_msg) {
         console.log(error_msg)
         console.log('wrong!')
+        alert('密码或账号错误')
       }
     }).done(function () {
       location.assign('/profile')

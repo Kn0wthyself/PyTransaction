@@ -1,7 +1,7 @@
 $(function () { 
   $("#logout").click(function (event) {
     event.preventDefault()
-    sessionStorage.removeItem('jwt')
+    localStorage.removeItem('jwt')
     location.assign('/index')
   })
 })
