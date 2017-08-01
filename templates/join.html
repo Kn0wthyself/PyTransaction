@@ -2,11 +2,9 @@
 {% block script %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/join.css' %}">
 <script src="{% static 'js/src/join.js' %}"></script>
+<script src="{% static 'js/src/is_logined.js' %}"></script>
 {% endblock %} 
 {% block nav-left %}
-<li class="nav-item active">
-    <a class="nav-link" href="/index/">Home <span class="sr-only">(current)</span></a>
-</li>
 <li class="nav-item">
     <a class="nav-link" href="#">发布</a>
 </li>
@@ -65,6 +63,7 @@
             <p>这里可以放置一些提示信息
             </p>
             <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+            <a class="btn btn-primary" href="/login" role="button">已有账号？点此登录</a>
         </div>
     </div>
 {% endblock %}
