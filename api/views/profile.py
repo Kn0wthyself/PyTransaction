@@ -1,4 +1,3 @@
-# -*- coding: utf8 -*-
 from rest_framework_jwt.views import JSONWebTokenAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
