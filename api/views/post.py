@@ -1,13 +1,22 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.contrib.auth.models import User
 
 from api.serializer.auth import JSONWebTokenSerializer, UserSerializer
-from api.serializer.post import OrderSerializer, PostTagSerializer
+from api.serializer.post import OrderSerializer, PostSerializer
 from api.models.user import EmployerProfile, DeveloperProfile
-from api.models.post import PostTag
+from api.models.post import Post, Tag
 from api.models.transaction import Order
 
-class CreatePostTagAPI(APIView):
+def GetUser(userid):
+    user = User.objects.get(id=userid)
+    return user
+
+def GetTag(tagid):
+    tag = Tag.objects.get(id=tagid)
+    return tag
+
+class CreatePostAPI(APIView):
     '''
     发表需求帖.
     '''
@@ -15,68 +24,66 @@ class CreatePostTagAPI(APIView):
     @classmethod
     def post(cls, request):
         data = request.data
-        # 使用当前登录用户作为发帖人.
-        data['author'] = request.user
-        serializer = PostTagSerializer(data=data)
+        serializer = PostSerializer(data=data)
         if serializer.is_valid():
             posttag = serializer.save()
             return Response(data={'msg': 'success'}, status=200)
         return Response(data={'error_msg': serializer.errors}, status=400)
 
 
-class GetPostTagByIDAPI(APIView):
-    '''
-    通过ID获取需求帖.
-    '''
+# class GetPostByIDAPI(APIView):
+#     '''
+#     通过ID获取需求帖.
+#     '''
 
-    @classmethod
-    def get(cls, request):
-        data = request.data
-        try:
-            posttag = PostTag.objects.get(id=data['id'])
-        except PostTag.DoesNotExist:
-            return Response(data={'error_msg': 'DoesNotExist'}, status=404)
-        return Response(data=PostTagSerializer(posttag), status=200)
+#     @classmethod
+#     def get(cls, request):
+#         data = request.data
+#         try:
+#             posttag = Post.objects.get(id=data['id'])
+#         except Post.DoesNotExist:
+#             return Response(data={'error_msg': 'DoesNotExist'}, status=404)
+#         return Response(data=PostSerializer(posttag), status=200)
 
-class GetPostTagByAuthorAPI(APIView):
-    '''
-    获取某一用户发表的所有需求帖.
-    '''
+# class GetPostByAuthorAPI(APIView):
+#     '''
+#     获取某一用户发表的所有需求帖.
+#     '''
 
-    @classmethod
-    def get(cls, request):
-        data = request.data
-        user = EmployerProfile.objects.get(id=data['id'])
-        # 按ID降序排列.
-        posttag = PostTag.objects.filter(author=user).order_by('-id')
-        return Response(data=PostTagSerializer(posttag, many=True), status=200)
-
-
-class GetPostTagByDevAPI(APIView):
-    '''
-    获取某一用户接受的所有需求帖.
-    '''
-
-    @classmethod
-    def get(cls, request):
-        data = request.data
-        user = DeveloperProfile.objects.get(id=data['id'])
-        order = Order.objects.filter(receive_user=user)
-        # 按ID降序排列.
-        posttag = order.objects.post.order_by('-id')
-        return Response(data=PostTagSerializer(posttag, many=True), status=200)
+#     @classmethod
+#     def get(cls, request):
+#         data = request.data
+#         user = GetUser(data['id'])
+#         # 按ID降序排列.
+#         posttag = Post.objects.filter(author=user).order_by('-id')
+#         return Response(data=PostSerializer(posttag, many=True), status=200)
 
 
-class GetPostTagAllAPI(APIView):
-    '''
-    获取已发表的所有需求帖.
-    '''
+# class GetPostByDevAPI(APIView):
+#     '''
+#     获取某一用户接受的所有需求帖.
+#     '''
 
-    @classmethod
-    def get(cls, request):
-        # 按ID降序排列.
-        posttag = PostTag.objects.all().order_by('-id')
-        return Response(data=PostTagSerializer(posttag, many=True), status=200)
+#     @classmethod
+#     def get(cls, request):
+#         data = request.data
+#         user = GetUser(data['id'])
+#         order = Order.objects.filter(receive_user=user)
+#         # 按ID降序排列.
+#         posttag = order.objects.post.order_by('-id')
+#         return Response(data=PostSerializer(posttag, many=True), status=200)
+
+
+# class GetPostAllAPI(APIView):
+#     '''
+#     获取已发表的所有需求帖.
+#     '''
+
+#     @classmethod
+#     def get(cls, request):
+#         # 按ID降序排列.
+#         posttag = Post.objects.all().order_by('-id')
+#         return Response(data=PostSerializer(posttag, many=True), status=200)
 
 
 class AcceptPostAPI(APIView):
@@ -90,16 +97,21 @@ class AcceptPostAPI(APIView):
         通过需求贴ID定位需求帖.
         '''
         data = request.data
-        posttag = PostTag.objects.get(id=data['id'])
-        posttag.update(status=300)
+        posttag = Post.objects.get(id=data['id'])
         data['amount'] = posttag.reward
-        data['pay_user'] = posttag.author
+        data['pay_user'] = posttag.author.id
         data['title'] = posttag.title
         data['status'] = 100
-        data['post'] = posttag
+        data['post'] = posttag.id
+        data['receive_user'] = data['userid']
         serializer = OrderSerializer(data=data)
         if serializer.is_valid():
-            order = serializer.save()
+            try:
+                order = serializer.save()
+                posttag.status=300
+                posttag.save()
+            except:
+                return Response(data={'error_msg': serializer.errors}, status=400)
             return Response(data={'msg': 'success'}, status=200)
         return Response(data={'error_msg': serializer.errors}, status=400)
 
@@ -114,12 +126,13 @@ class CancelPostAPI(APIView):
         通过需求贴ID定位需求帖.
         '''
         data = request.data
-        posttag = PostTag.objects.get(id=data['id'])
-        posttag.update(status=500)
+        posttag = Post.objects.get(id=data['id'])
         try:
             Order.objects.filter(post=posttag).update(status=500)
         except:
             return Response(data={'error_msg': 'Unsuccess'}, status=400)
+        posttag.status=500
+        posttag.save()
         return Response(data={'msg': 'success'}, status=200)
 
 class CloseOrderByDevAPI(APIView):
@@ -133,12 +146,13 @@ class CloseOrderByDevAPI(APIView):
         通过需求贴ID定位需求帖.
         '''
         data = request.data
-        posttag = PostTag.objects.get(id=data['id'])
-        posttag.update(status=200)
+        posttag = Post.objects.get(id=data['id'])
         try:
-            Order.objects.filter(post=posttag).filter(receive_user=request.user).update(status=200)
+            Order.objects.filter(post=posttag).filter(receive_user=GetUser(data['userid'])).update(status=200)
         except:
             return Response(data={'error_msg': 'Unsuccess'}, status=400)
+        posttag.status=200
+        posttag.save()
         return Response(data={'msg': 'success'}, status=200)
 
 
@@ -153,12 +167,13 @@ class CloseOrderByUserAPI(APIView):
         通过需求贴ID定位需求帖.
         '''
         data = request.data
-        posttag = PostTag.objects.get(id=data['id'])
-        posttag.update(status=200)
+        posttag = Post.objects.get(id=data['id'])
         try:
-            Order.objects.filter(post=posttag).filter(pay_user=request.user).update(status=200)
+            Order.objects.filter(post=posttag).filter(pay_user=GetUser(data['userid'])).update(status=200)
         except:
             return Response(data={'error_msg': 'Unsuccess'}, status=400)
+        posttag.status=200
+        posttag.save()
         return Response(data={'msg': 'success'}, status=200)
 
 
@@ -173,10 +188,11 @@ class FinishOrderAPI(APIView):
         通过需求贴ID定位需求帖.
         '''
         data = request.data
-        posttag = PostTag.objects.get(id=data['id'])
-        posttag.update(status=400)
+        posttag = Post.objects.get(id=data['id'])
         try:
-            Order.objects.filter(post=posttag).filter(pay_user=request.user).update(status=300)
+            Order.objects.filter(post=posttag).filter(pay_user=GetUser(data['userid'])).update(status=300)
         except:
             return Response(data={'error_msg': 'Unsuccess'}, status=400)
+        posttag.status=400
+        posttag.save()
         return Response(data={'msg': 'success'}, status=200)

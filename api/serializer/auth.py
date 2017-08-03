@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 from api.models import Profile
 from api.models.transaction import Order
-from api.models.post import Post, PostTag
+from api.models.post import Post
 
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER

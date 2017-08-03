@@ -3,8 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
-from api.serializer.auth import JSONWebTokenSerializer, UserSerializer, PostTagSerializer
-from api.models.post import PostTag
+from api.serializer.auth import JSONWebTokenSerializer, UserSerializer
+from api.serializer.post import PostSerializer
 from api.models.transaction import Order
 
 

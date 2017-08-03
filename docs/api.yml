@@ -149,6 +149,7 @@ paths:
           schema:
             type: object
             required:
+              - author
               - title
               - content
               - reward
@@ -156,6 +157,8 @@ paths:
               - status
               - tag
             properties:
+              author:
+                type: integer
               title:
                 type: string
               content:
@@ -167,7 +170,7 @@ paths:
               status:
                 type: integer
               tag:
-                type: string
+                type: integer
       responses:
         200:
           description: 发表成功
@@ -182,110 +185,110 @@ paths:
       tags:
         - post
 
-  /get-post-id:
-    get:
-      summary: 根据ID获取需求帖
-      description: 根据ID获取需求帖
-      parameters:
-        - in: body
-          description: 获取需求帖
-          name: body
-          schema:
-            type: object
-            required:
-              - id
-            properties:
-              id:
-                type: integer
-      responses:
-        200:
-          description: 获取成功
-          properties:
-            msg:
-              type: string
-        400:
-          description: 不存在该需求帖
-          properties:
-            error_msg:
-              type: string
-      tags:
-        - post
+  # /get-post-id:
+  #   get:
+  #     summary: 根据ID获取需求帖
+  #     description: 根据ID获取需求帖
+  #     parameters:
+  #       - in: body
+  #         description: 获取需求帖
+  #         name: body
+  #         schema:
+  #           type: object
+  #           required:
+  #             - id
+  #           properties:
+  #             id:
+  #               type: integer
+  #     responses:
+  #       200:
+  #         description: 获取成功
+  #         properties:
+  #           msg:
+  #             type: string
+  #       400:
+  #         description: 不存在该需求帖
+  #         properties:
+  #           error_msg:
+  #             type: string
+  #     tags:
+  #       - post
 
-  /get-post-author:
-    get:
-      summary: 根据用户ID获取需求帖
-      description: 根据用户ID获取需求帖
-      parameters:
-        - in: body
-          description: 获取需求帖
-          name: body
-          schema:
-            type: object
-            required:
-              - id
-            properties:
-              id:
-                type: integer
-      responses:
-        200:
-          description: 获取成功
-          properties:
-            msg:
-              type: string
-        400:
-          description: 获取失败
-          properties:
-            error_msg:
-              type: string
-      tags:
-        - post
+  # /get-post-author:
+  #   get:
+  #     summary: 根据用户ID获取需求帖
+  #     description: 根据用户ID获取需求帖
+  #     parameters:
+  #       - in: body
+  #         description: 获取需求帖
+  #         name: body
+  #         schema:
+  #           type: object
+  #           required:
+  #             - id
+  #           properties:
+  #             id:
+  #               type: integer
+  #     responses:
+  #       200:
+  #         description: 获取成功
+  #         properties:
+  #           msg:
+  #             type: string
+  #       400:
+  #         description: 获取失败
+  #         properties:
+  #           error_msg:
+  #             type: string
+  #     tags:
+  #       - post
 
-  /get-post-dev:
-    get:
-      summary: 根据接单开发者ID获取需求帖
-      description: 根据接单开发者ID获取需求帖
-      parameters:
-        - in: body
-          description: 获取需求帖
-          name: body
-          schema:
-            type: object
-            required:
-              - id
-            properties:
-              id:
-                type: integer
-      responses:
-        200:
-          description: 获取成功
-          properties:
-            msg:
-              type: string
-        400:
-          description: 获取失败
-          properties:
-            error_msg:
-              type: string
-      tags:
-        - post
+  # /get-post-dev:
+  #   get:
+  #     summary: 根据接单开发者ID获取需求帖
+  #     description: 根据接单开发者ID获取需求帖
+  #     parameters:
+  #       - in: body
+  #         description: 获取需求帖
+  #         name: body
+  #         schema:
+  #           type: object
+  #           required:
+  #             - id
+  #           properties:
+  #             id:
+  #               type: integer
+  #     responses:
+  #       200:
+  #         description: 获取成功
+  #         properties:
+  #           msg:
+  #             type: string
+  #       400:
+  #         description: 获取失败
+  #         properties:
+  #           error_msg:
+  #             type: string
+  #     tags:
+  #       - post
 
-  /get-post-all:
-    get:
-      summary: 获取所有需求帖
-      description: 获取所有需求帖
-      responses:
-        200:
-          description: 获取成功
-          properties:
-            msg:
-              type: string
-        400:
-          description: 获取失败
-          properties:
-            error_msg:
-              type: string
-      tags:
-        - post
+  # /get-post-all:
+  #   get:
+  #     summary: 获取所有需求帖
+  #     description: 获取所有需求帖
+  #     responses:
+  #       200:
+  #         description: 获取成功
+  #         properties:
+  #           msg:
+  #             type: string
+  #       400:
+  #         description: 获取失败
+  #         properties:
+  #           error_msg:
+  #             type: string
+  #     tags:
+  #       - post
 
   /accept-post:
     post:
@@ -299,8 +302,11 @@ paths:
             type: object
             required:
               - id
+              - userid
             properties:
               id:
+                type: integer
+              userid:
                 type: integer
       responses:
         200:
@@ -357,8 +363,11 @@ paths:
             type: object
             required:
               - id
+              - userid
             properties:
               id:
+                type: integer
+              userid:
                 type: integer
       responses:
         200:
@@ -386,8 +395,11 @@ paths:
             type: object
             required:
               - id
+              - userid
             properties:
               id:
+                type: integer
+              userid:
                 type: integer
       responses:
         200:
@@ -415,8 +427,11 @@ paths:
             type: object
             required:
               - id
+              - userid
             properties:
               id:
+                type: integer
+              userid:
                 type: integer
       responses:
         200:
