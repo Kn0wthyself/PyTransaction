@@ -1,4 +1,3 @@
-# -*- coding: utf8 -*-
 from django.db.models import Q
 from rest_framework import serializers
 from rest_framework_jwt.compat import PasswordField, Serializer
@@ -7,6 +6,8 @@ from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
 
 from api.models import Profile
+from api.models.transaction import Order
+from api.models.post import Post
 
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
@@ -61,3 +62,4 @@ class UserSerializer(serializers.ModelSerializer):
                                mobile=data.get('username'),
                                email=data.get('email'))
         return user
+

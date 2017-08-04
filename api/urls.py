@@ -17,6 +17,7 @@ from django.conf.urls import url
 from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token
 
 from api import views
+from api.views import post
 
 urlpatterns = [
     url('helloworld$', views.HelloWorldAPI.as_view()),
@@ -25,4 +26,14 @@ urlpatterns = [
     url('v1/basic-info$', views.BasicInfoAPI.as_view()),
     url('v1/modify-password$', views.ModifyPasswordAPI.as_view()),
     url('v1/verify-token$', verify_jwt_token),
+    url('v1/create-posttag$', views.post.CreatePostAPI.as_view()),
+    # url('v1/get-post-id$', views.post.GetPostByIDAPI.as_view()),
+    # url('v1/get-post-author$', views.post.GetPostByAuthorAPI.as_view()),
+    # url('v1/get-post-dev$', views.post.GetPostByDevAPI.as_view()),
+    # url('v1/get-post-all$', views.post.GetPostAllAPI.as_view()),
+    url('v1/accept-post$', views.post.AcceptPostAPI.as_view()),
+    url('v1/cancel-post$', views.post.CancelPostAPI.as_view()),
+    url('v1/close-post-dev$', views.post.CloseOrderByDevAPI.as_view()),
+    url('v1/close-post-user$', views.post.CloseOrderByUserAPI.as_view()),
+    url('v1/finish-post$', views.post.FinishOrderAPI.as_view()),
 ]

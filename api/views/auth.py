@@ -1,10 +1,11 @@
-# -*- coding: utf8 -*-
 from rest_framework_jwt.views import JSONWebTokenAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
 from api.serializer.auth import JSONWebTokenSerializer, UserSerializer
+from api.serializer.post import PostSerializer
+from api.models.transaction import Order
 
 
 class LoginView(JSONWebTokenAPIView):
@@ -38,4 +39,5 @@ class RegisterAPI(APIView):
             serializer.save()
             return Response(data={'msg': 'success'}, status=200)
         return Response(data={'error_msg': serializer.errors}, status=400)
+
 
