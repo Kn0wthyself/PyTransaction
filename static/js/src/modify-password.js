@@ -12,7 +12,7 @@ $(function () {
       headers: {'Authorization': 'jwt' + ' ' + localStorage.getItem('jwt')},
       success: function (msg) {
         console.log('modify password success!')
-        localStorage.removeItem('jwt')
+        localStorage.clear()
         location.assign('/login')
       },
       error: function (error_msg) {

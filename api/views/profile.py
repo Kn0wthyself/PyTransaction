@@ -11,7 +11,7 @@ class BasicInfoAPI(APIView):
     @classmethod
     def get(cls, request):
         user = request.user
-        return Response({'nickname': user.username, 'email': user.email})
+        return Response({'nickname': user.username, 'email': user.email, 'id': user.id})
 
 # class ModifyBasicInfoAPI(APIView):
 #     # update BacisInformation
