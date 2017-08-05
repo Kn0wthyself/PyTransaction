@@ -36,7 +36,6 @@ class GetOnesOrdersAPI(generics.ListAPIView):
     '''
     返回某个用户对应的user_id所有的订单
     '''
-    permission_classes = (IsAuthenticated,)
     serializer_class = PostSerializer
     def get_queryset(self):
         """
@@ -46,11 +45,23 @@ class GetOnesOrdersAPI(generics.ListAPIView):
         user_id = int(self.kwargs['user_id'])
         return Post.objects.filter(author_id=user_id)
 
+class GetAllOrdersAPI(generics.ListAPIView):
+    '''
+    返回所有用户对应的所有的订单
+    '''
+    serializer_class = PostSerializer
+    def get_queryset(self):
+        """
+        This view should return a list of all the orders for
+        all the user.
+        """
+        return Post.objects.all()
+
 class CreatePostAPI(APIView):
     '''
     发表需求帖.
     '''
-
+    permission_classes = (IsAuthenticated,)
     @classmethod
     def post(cls, request):
         data = request.data
@@ -120,7 +131,7 @@ class AcceptPostAPI(APIView):
     '''
     接受订单.
     '''
-
+    permission_classes = (IsAuthenticated,)
     @classmethod
     def post(cls, request):
         '''
@@ -149,7 +160,7 @@ class CancelPostAPI(APIView):
     '''
     取消需求.
     '''
-
+    permission_classes = (IsAuthenticated,)
     @classmethod
     def post(cls, request):
         '''
@@ -169,7 +180,7 @@ class CloseOrderByDevAPI(APIView):
     '''
     开发者放弃开发, 关闭订单.
     '''
-
+    permission_classes = (IsAuthenticated,)
     @classmethod
     def post(cls, request):
         '''
@@ -190,7 +201,7 @@ class CloseOrderByUserAPI(APIView):
     '''
     发起需求用户关闭订单.
     '''
-
+    permission_classes = (IsAuthenticated,)
     @classmethod
     def post(cls, request):
         '''
@@ -211,7 +222,7 @@ class FinishOrderAPI(APIView):
     '''
     由需求发起用户完成订单.
     '''
-
+    permission_classes = (IsAuthenticated,)
     @classmethod
     def post(cls, request):
         '''

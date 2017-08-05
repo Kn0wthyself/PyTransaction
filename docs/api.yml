@@ -156,22 +156,12 @@ paths:
             error_msg:
               type: string
       tags:
-        - user
-  
-  /get-orders/{user_id}/:
+        - get-order
+
+  /get-all-orders:
     get:
-      summary: 获取用户id为user_id发布的所有订单信息
-      description: 获取用户id为user_id所有订单信息
-      parameters:
-        - in: path
-          name: user_id   # Note the name is the same as in the path
-          required: true
-          schema:
-            type: integer
-            minimum: 1
-          description: The user ID
-      security:
-        - APIKeyHeader: []
+      summary: 获取所有用户发布的所有订单信息
+      description: 获取所有用户所有订单信息
       responses:
         200:
           description: 获取成功
@@ -184,12 +174,40 @@ paths:
             error_msg:
               type: string
       tags:
-        - user
+        - get-order
+
+  /get-orders/{user_id}:
+    get:
+      summary: 获取用户id为user_id发布的所有订单信息
+      description: 获取用户id为user_id所有订单信息
+      parameters:
+        - in: path
+          name: user_id   # Note the name is the same as in the path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: The user ID
+      responses:
+        200:
+          description: 获取成功
+          properties:
+            msg:
+              type: string
+        400:
+          description: 获取失败
+          properties:
+            error_msg:
+              type: string
+      tags:
+        - get-order
 
   /create-posttag:
     post:
       summary: 发布需求帖
       description: 发布需求帖
+      security:
+        - APIKeyHeader: []
       parameters:
         - in: body
           description: 发布需求帖
@@ -342,6 +360,8 @@ paths:
     post:
       summary: 接受需求帖
       description: 接受需求帖
+      security:
+        - APIKeyHeader: []
       parameters:
         - in: body
           description: 接受需求帖
@@ -374,6 +394,8 @@ paths:
     post:
       summary: 取消需求帖
       description: 取消需求帖
+      security:
+        - APIKeyHeader: []
       parameters:
         - in: body
           description: 取消需求帖
@@ -403,6 +425,8 @@ paths:
     post:
       summary: 开发者放弃开发
       description: 开发者放弃开发
+      security:
+        - APIKeyHeader: []
       parameters:
         - in: body
           description: 开发者放弃开发
@@ -435,6 +459,8 @@ paths:
     post:
       summary: 发起者放弃需求
       description: 发起者放弃需求
+      security:
+        - APIKeyHeader: []
       parameters:
         - in: body
           description: 发起者放弃需求
@@ -467,6 +493,8 @@ paths:
     post:
       summary: 由发起人完成订单
       description: 由发起人完成订单
+      security:
+        - APIKeyHeader: []
       parameters:
         - in: body
           description: 由发起人完成订单
