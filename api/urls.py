@@ -36,4 +36,6 @@ urlpatterns = [
     url('v1/close-post-dev$', views.post.CloseOrderByDevAPI.as_view()),
     url('v1/close-post-user$', views.post.CloseOrderByUserAPI.as_view()),
     url('v1/finish-post$', views.post.FinishOrderAPI.as_view()),
+    url('v1/get-my-orders$', views.post.GetMyOrdersAPI.as_view()),
+    url('v1/get-orders/(?P<user_id>.+)/$', views.post.GetOnesOrdersAPI.as_view()),
 ]

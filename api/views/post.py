@@ -1,6 +1,8 @@
+from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth.models import User
+from rest_framework.permissions import IsAuthenticated
 
 from api.serializer.auth import JSONWebTokenSerializer, UserSerializer
 from api.serializer.post import OrderSerializer, PostSerializer
@@ -15,6 +17,34 @@ def GetUser(userid):
 def GetTag(tagid):
     tag = Tag.objects.get(id=tagid)
     return tag
+
+class GetMyOrdersAPI(generics.ListAPIView):
+    '''
+    返回当前用户所有的订单
+    '''
+    permission_classes = (IsAuthenticated,)
+    serializer_class = PostSerializer
+    def get_queryset(self):
+        """
+        This view should return a list of all the orders
+        for the currently authenticated user.
+        """
+        user = self.request.user
+        return Post.objects.filter(author_id=user.id)
+
+class GetOnesOrdersAPI(generics.ListAPIView):
+    '''
+    返回某个用户对应的user_id所有的订单
+    '''
+    permission_classes = (IsAuthenticated,)
+    serializer_class = PostSerializer
+    def get_queryset(self):
+        """
+        This view should return a list of all the orders for
+        the user as determined by the user_id portion of the URL.
+        """
+        user_id = int(self.kwargs['user_id'])
+        return Post.objects.filter(author_id=user_id)
 
 class CreatePostAPI(APIView):
     '''
