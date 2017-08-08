@@ -8,7 +8,7 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ('author', 'title', 'content', 'reward', 'contact_mobile', 'status', 'tag')
+        fields = ('id','author', 'title', 'content', 'reward', 'contact_mobile', 'status', 'tag')
 
     def save(self, **kwargs):
         data = self.data

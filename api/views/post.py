@@ -72,61 +72,6 @@ class CreatePostAPI(APIView):
         return Response(data={'error_msg': serializer.errors}, status=400)
 
 
-# class GetPostByIDAPI(APIView):
-#     '''
-#     通过ID获取需求帖.
-#     '''
-
-#     @classmethod
-#     def get(cls, request):
-#         data = request.data
-#         try:
-#             posttag = Post.objects.get(id=data['id'])
-#         except Post.DoesNotExist:
-#             return Response(data={'error_msg': 'DoesNotExist'}, status=404)
-#         return Response(data=PostSerializer(posttag), status=200)
-
-# class GetPostByAuthorAPI(APIView):
-#     '''
-#     获取某一用户发表的所有需求帖.
-#     '''
-
-#     @classmethod
-#     def get(cls, request):
-#         data = request.data
-#         user = GetUser(data['id'])
-#         # 按ID降序排列.
-#         posttag = Post.objects.filter(author=user).order_by('-id')
-#         return Response(data=PostSerializer(posttag, many=True), status=200)
-
-
-# class GetPostByDevAPI(APIView):
-#     '''
-#     获取某一用户接受的所有需求帖.
-#     '''
-
-#     @classmethod
-#     def get(cls, request):
-#         data = request.data
-#         user = GetUser(data['id'])
-#         order = Order.objects.filter(receive_user=user)
-#         # 按ID降序排列.
-#         posttag = order.objects.post.order_by('-id')
-#         return Response(data=PostSerializer(posttag, many=True), status=200)
-
-
-# class GetPostAllAPI(APIView):
-#     '''
-#     获取已发表的所有需求帖.
-#     '''
-
-#     @classmethod
-#     def get(cls, request):
-#         # 按ID降序排列.
-#         posttag = Post.objects.all().order_by('-id')
-#         return Response(data=PostSerializer(posttag, many=True), status=200)
-
-
 class AcceptPostAPI(APIView):
     '''
     接受订单.
