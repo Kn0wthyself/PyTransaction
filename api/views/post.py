@@ -45,6 +45,18 @@ class GetOnesOrdersAPI(generics.ListAPIView):
         user_id = int(self.kwargs['user_id'])
         return Post.objects.filter(author_id=user_id)
 
+class GetOrderByIdAPI(generics.ListAPIView):
+    '''
+    返回某个需求订单id所有的订单
+    '''
+    serializer_class = PostSerializer
+    def get_queryset(self):
+        """
+        This view should return the order by the post_id portion of the URL.
+        """
+        post_id = int(self.kwargs['post_id'])
+        return Post.objects.filter(id=post_id)
+
 class GetAllOrdersAPI(generics.ListAPIView):
     '''
     返回所有用户对应的所有的订单

@@ -7,7 +7,7 @@ $(function () {
     success: function (response) {
       for (var i = 0; i < response.length; i++) {
         console.log(response[i])
-        $("#order_list > ul" ).append('<li><h4><a href="#">' + response[i]["author"] + '</a>' + '发布了' + '<a href="#">' + response[i]["title"] + '</a></h4></li>')
+        $("#order_list > ul" ).append('<li><h4><a href="#">' + response[i]["author"] + '</a>' + '发布了' + '<a href=/order/' + response[i]["id"] + '>' + response[i]["title"] + '</a></h4></li>')
       }
     }
   })
