@@ -10,3 +10,6 @@ class order_list(TemplateView):
 
 class all_orders(TemplateView):
     template_name = 'all_orders.html'
+
+class order_detail(TemplateView):
+    template_name = 'order_detail.html'
