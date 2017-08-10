@@ -45,6 +45,18 @@ class GetOnesOrdersAPI(generics.ListAPIView):
         user_id = int(self.kwargs['user_id'])
         return Post.objects.filter(author_id=user_id)
 
+class GetOrderByIdAPI(generics.ListAPIView):
+    '''
+    返回某个需求订单id所有的订单
+    '''
+    serializer_class = PostSerializer
+    def get_queryset(self):
+        """
+        This view should return the order by the post_id portion of the URL.
+        """
+        post_id = int(self.kwargs['post_id'])
+        return Post.objects.filter(id=post_id)
+
 class GetAllOrdersAPI(generics.ListAPIView):
     '''
     返回所有用户对应的所有的订单
@@ -70,61 +82,6 @@ class CreatePostAPI(APIView):
             posttag = serializer.save()
             return Response(data={'msg': 'success'}, status=200)
         return Response(data={'error_msg': serializer.errors}, status=400)
-
-
-# class GetPostByIDAPI(APIView):
-#     '''
-#     通过ID获取需求帖.
-#     '''
-
-#     @classmethod
-#     def get(cls, request):
-#         data = request.data
-#         try:
-#             posttag = Post.objects.get(id=data['id'])
-#         except Post.DoesNotExist:
-#             return Response(data={'error_msg': 'DoesNotExist'}, status=404)
-#         return Response(data=PostSerializer(posttag), status=200)
-
-# class GetPostByAuthorAPI(APIView):
-#     '''
-#     获取某一用户发表的所有需求帖.
-#     '''
-
-#     @classmethod
-#     def get(cls, request):
-#         data = request.data
-#         user = GetUser(data['id'])
-#         # 按ID降序排列.
-#         posttag = Post.objects.filter(author=user).order_by('-id')
-#         return Response(data=PostSerializer(posttag, many=True), status=200)
-
-
-# class GetPostByDevAPI(APIView):
-#     '''
-#     获取某一用户接受的所有需求帖.
-#     '''
-
-#     @classmethod
-#     def get(cls, request):
-#         data = request.data
-#         user = GetUser(data['id'])
-#         order = Order.objects.filter(receive_user=user)
-#         # 按ID降序排列.
-#         posttag = order.objects.post.order_by('-id')
-#         return Response(data=PostSerializer(posttag, many=True), status=200)
-
-
-# class GetPostAllAPI(APIView):
-#     '''
-#     获取已发表的所有需求帖.
-#     '''
-
-#     @classmethod
-#     def get(cls, request):
-#         # 按ID降序排列.
-#         posttag = Post.objects.all().order_by('-id')
-#         return Response(data=PostSerializer(posttag, many=True), status=200)
 
 
 class AcceptPostAPI(APIView):

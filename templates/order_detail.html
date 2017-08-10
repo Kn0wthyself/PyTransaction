@@ -3,7 +3,7 @@
     crossorigin="anonymous"></script> -->
 <link rel="stylesheet" type="text/css" href="{% static 'css/join.css' %}">
 <script type="text/javascript" src="{% static 'js/src/logout.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/src/get_my_orders.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/src/order_detail.js' %}"></script>
 {% endblock %} {% block nav-left %}
 <li class="nav-item">
     <a class="nav-link" href="/post_order">发布</a>
@@ -32,8 +32,7 @@
 </form>
 {% endblock %}
 {% block content %}
-<div class="container" id="order_list">
-    <h2>我的订单</h2>
-    <ul></ul>
+<div class="container" id="order_detail">
+
 </div>
 {% endblock %}

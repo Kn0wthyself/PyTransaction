@@ -7,3 +7,9 @@ class post_order(TemplateView):
 
 class order_list(TemplateView):
     template_name = 'order_list.html'
+
+class all_orders(TemplateView):
+    template_name = 'all_orders.html'
+
+class order_detail(TemplateView):
+    template_name = 'order_detail.html'

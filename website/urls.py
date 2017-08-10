@@ -26,5 +26,7 @@ urlpatterns = [
     url('about', views.about.as_view()),
     url('order_list', views.order_list.as_view()),
     url('post_order', views.post_order.as_view()),
+    url('all_orders', views.all_orders.as_view()),
+    url('order_detail/(?P<order_id>[0-9]+)', views.order_detail.as_view()),
     url(r'^$', views.index.as_view()),
 ]
