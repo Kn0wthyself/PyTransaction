@@ -11,12 +11,10 @@ $(function () {
       dataType: 'json',
       success: function (msg) {
         console.log('login success!')
-        // console.log(msg)
-        // console.log(msg['token'])
         localStorage.setItem('jwt', msg['token'])
         console.log(localStorage.getItem('jwt'))
         localStorage.setItem('username', $username)
-        // location.assign('/user_admin')
+        localStorage.setItem('user_id', response['id'])
       },
       error: function (error_msg) {
         console.log(error_msg)
