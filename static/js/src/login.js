@@ -5,7 +5,10 @@ $(function () {
     var $password = $('#password').val()
     $.ajax({
       url: '/api/v1/login',
-      data: JSON.stringify({username: $username, password: $password}),
+      data: JSON.stringify({
+        username: $username,
+        password: $password
+      }),
       contentType: 'application/json',
       type: 'POST',
       dataType: 'json',
@@ -21,7 +24,19 @@ $(function () {
         alert('密码或账号错误')
       }
     }).done(function () {
-      location.assign('/profile')
+      $.ajax({
+        url: '/api/v1/basic-info',
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+          'Authorization': 'jwt' + ' ' + localStorage.getItem('jwt')
+        },
+        success: function (response) {
+          localStorage.setItem('user_id', response['id'])
+        }
+      }).done(function () {
+        location.assign('/profile')
+      })
     })
   })
 })
