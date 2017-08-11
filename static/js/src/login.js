@@ -14,7 +14,6 @@ $(function () {
         localStorage.setItem('jwt', msg['token'])
         console.log(localStorage.getItem('jwt'))
         localStorage.setItem('username', $username)
-        localStorage.setItem('user_id', response['id'])
       },
       error: function (error_msg) {
         console.log(error_msg)

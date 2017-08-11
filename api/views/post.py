@@ -95,7 +95,8 @@ class AcceptPostAPI(APIView):
         通过需求贴ID定位需求帖.
         '''
         data = request.data
-        posttag = Post.objects.get(id=data['id'])
+        # posttag = Post.objects.get(id=data['id'])
+        posttag = Post.objects.filter(id=data['id'])[0]
         data['amount'] = posttag.reward
         data['pay_user'] = posttag.author.id
         data['title'] = posttag.title
