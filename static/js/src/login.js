@@ -33,6 +33,7 @@ $(function () {
         },
         success: function (response) {
           localStorage.setItem('user_id', response['id'])
+          localStorage.setItem('nickname', response['nickname'])
         }
       }).done(function () {
         location.assign('/profile')
