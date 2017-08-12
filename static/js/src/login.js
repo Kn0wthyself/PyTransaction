@@ -5,18 +5,18 @@ $(function () {
     var $password = $('#password').val()
     $.ajax({
       url: '/api/v1/login',
-      data: JSON.stringify({username: $username, password: $password}),
+      data: JSON.stringify({
+        username: $username,
+        password: $password
+      }),
       contentType: 'application/json',
       type: 'POST',
       dataType: 'json',
       success: function (msg) {
         console.log('login success!')
-        // console.log(msg)
-        // console.log(msg['token'])
         localStorage.setItem('jwt', msg['token'])
         console.log(localStorage.getItem('jwt'))
         localStorage.setItem('username', $username)
-        // location.assign('/user_admin')
       },
       error: function (error_msg) {
         console.log(error_msg)
@@ -24,7 +24,20 @@ $(function () {
         alert('密码或账号错误')
       }
     }).done(function () {
-      location.assign('/profile')
+      $.ajax({
+        url: '/api/v1/basic-info',
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+          'Authorization': 'jwt' + ' ' + localStorage.getItem('jwt')
+        },
+        success: function (response) {
+          localStorage.setItem('user_id', response['id'])
+          localStorage.setItem('nickname', response['nickname'])
+        }
+      }).done(function () {
+        location.assign('/profile')
+      })
     })
   })
 })

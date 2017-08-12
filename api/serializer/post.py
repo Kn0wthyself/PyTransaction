@@ -26,7 +26,7 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = ('amount', 'pay_user', 'title', 'status', 'post')
+        fields = ('amount', 'pay_user', 'receive_user', 'title', 'status', 'post')
 
     def save(self, **kwargs):
         data = self.data
