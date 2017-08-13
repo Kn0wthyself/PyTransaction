@@ -9,7 +9,8 @@ $(function () {
         console.log(response[i])
         $("#order_list > table > tbody" ).append('<tr>\
         <td>' + response[i]["id"] + '</td>\
-        <td>' + response[i]["author"] + '</td>\
+        <td>' + response[i]["author_nickname"] + '</td>\
+        <td>' + response[i]["developer_nickname"] + '</td>\
         <td>' + response[i]["title"] + '</td>\
         <td>' + response[i]["reward"] + '</td>\
         <td>' + response[i]["tag"] + '</td>\

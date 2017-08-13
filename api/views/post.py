@@ -108,6 +108,8 @@ class AcceptPostAPI(APIView):
             try:
                 order = serializer.save()
                 posttag.status=300
+                posttag.developer = User.objects.get(id=data['userid'])
+                posttag.developer_nickname = User.objects.get(id=data['userid']).get_username(),
                 posttag.save()
             except:
                 return Response(data={'error_msg': serializer.errors}, status=400)
@@ -151,6 +153,8 @@ class CloseOrderByDevAPI(APIView):
         except:
             return Response(data={'error_msg': 'Unsuccess'}, status=400)
         posttag.status=200
+        posttag.developer = None
+        posttag.developer_nickname = None
         posttag.save()
         return Response(data={'msg': 'success'}, status=200)
 
@@ -172,6 +176,8 @@ class CloseOrderByUserAPI(APIView):
         except:
             return Response(data={'error_msg': 'Unsuccess'}, status=400)
         posttag.status=200
+        posttag.developer = None
+        posttag.developer_nickname = None
         posttag.save()
         return Response(data={'msg': 'success'}, status=200)
 
