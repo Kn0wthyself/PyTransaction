@@ -38,6 +38,9 @@ $(function () {
         contentType: 'application/json',
         type: 'POST',
         dataType: 'json',
+        headers: {
+          'Authorization': 'jwt' + ' ' + localStorage.getItem('jwt')
+        },
         success: function (msg) {
           console.log(msg)
           console.log('post correctly!!')
