@@ -17,6 +17,7 @@ function acceptOrder() {
     },
     success: function (msg) {
       console.log('accept success!')
+      location.assign('/all_orders')
     },
     error: function (error_msg) {
       console.log(error_msg)

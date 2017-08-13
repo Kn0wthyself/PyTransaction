@@ -21,7 +21,7 @@ $(function () {
         operate_html = accept_post_html
       }
       $('#order_detail').append('<h2>' + response[0]['title'] + '</h2>\
-      <h4>No.' + response[0]['id'] + '&nbsp;&nbsp;&nbsp;发布者:' + response[0]['author'] + '</h4>\
+      <h4>No.' + response[0]['id'] + '&nbsp;&nbsp;&nbsp;发布者:' + response[0]['author_nickname'] + '&nbsp;&nbsp;&nbsp;开发者:' + response[0]['developer_nickname'] +'</h4>\
       <h4>报酬：' + response[0]['reward'] + '&nbsp;&nbsp;&nbsp;\
       联系方式:' + response[0]['contact_mobile'] + '&nbsp;&nbsp;&nbsp;\
       Tag:' + response[0]['tag'] + '&nbsp;&nbsp;&nbsp;状态:' + response[0]['status'] + '</h4>\
