@@ -158,6 +158,26 @@ paths:
       tags:
         - get-order
 
+  /get-my-dev-orders:
+    get:
+      summary: 获取当前用户接收的所有订单信息
+      description: 获取当前用户接收的所有订单信息
+      security:
+        - APIKeyHeader: []
+      responses:
+        200:
+          description: 获取成功
+          properties:
+            msg:
+              type: string
+        400:
+          description: 获取失败
+          properties:
+            error_msg:
+              type: string
+      tags:
+        - get-order
+
   /get-all-orders:
     get:
       summary: 获取所有用户发布的所有订单信息
@@ -258,7 +278,7 @@ paths:
               reward:
                 type: integer
               contact_mobile:
-                type: string
+                type: integer
               status:
                 type: integer
               tag:
@@ -276,111 +296,6 @@ paths:
               type: string
       tags:
         - post
-
-  # /get-post-id:
-  #   get:
-  #     summary: 根据ID获取需求帖
-  #     description: 根据ID获取需求帖
-  #     parameters:
-  #       - in: body
-  #         description: 获取需求帖
-  #         name: body
-  #         schema:
-  #           type: object
-  #           required:
-  #             - id
-  #           properties:
-  #             id:
-  #               type: integer
-  #     responses:
-  #       200:
-  #         description: 获取成功
-  #         properties:
-  #           msg:
-  #             type: string
-  #       400:
-  #         description: 不存在该需求帖
-  #         properties:
-  #           error_msg:
-  #             type: string
-  #     tags:
-  #       - post
-
-  # /get-post-author:
-  #   get:
-  #     summary: 根据用户ID获取需求帖
-  #     description: 根据用户ID获取需求帖
-  #     parameters:
-  #       - in: body
-  #         description: 获取需求帖
-  #         name: body
-  #         schema:
-  #           type: object
-  #           required:
-  #             - id
-  #           properties:
-  #             id:
-  #               type: integer
-  #     responses:
-  #       200:
-  #         description: 获取成功
-  #         properties:
-  #           msg:
-  #             type: string
-  #       400:
-  #         description: 获取失败
-  #         properties:
-  #           error_msg:
-  #             type: string
-  #     tags:
-  #       - post
-
-  # /get-post-dev:
-  #   get:
-  #     summary: 根据接单开发者ID获取需求帖
-  #     description: 根据接单开发者ID获取需求帖
-  #     parameters:
-  #       - in: body
-  #         description: 获取需求帖
-  #         name: body
-  #         schema:
-  #           type: object
-  #           required:
-  #             - id
-  #           properties:
-  #             id:
-  #               type: integer
-  #     responses:
-  #       200:
-  #         description: 获取成功
-  #         properties:
-  #           msg:
-  #             type: string
-  #       400:
-  #         description: 获取失败
-  #         properties:
-  #           error_msg:
-  #             type: string
-  #     tags:
-  #       - post
-
-  # /get-post-all:
-  #   get:
-  #     summary: 获取所有需求帖
-  #     description: 获取所有需求帖
-  #     responses:
-  #       200:
-  #         description: 获取成功
-  #         properties:
-  #           msg:
-  #             type: string
-  #       400:
-  #         description: 获取失败
-  #         properties:
-  #           error_msg:
-  #             type: string
-  #     tags:
-  #       - post
 
   /accept-post:
     post:

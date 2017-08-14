@@ -3,8 +3,7 @@
     crossorigin="anonymous"></script> -->
 <link rel="stylesheet" type="text/css" href="{% static 'css/join.css' %}">
 <script type="text/javascript" src="{% static 'js/src/logout.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/src/order_detail.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/src/operate_order.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/src/get_my_dev_orders.js' %}"></script>
 {% endblock %} {% block nav-left %}
 <li class="nav-item">
     <a class="nav-link" href="/post_order">发布</a>
@@ -31,10 +30,25 @@
     <input class="form-control mr-sm-2" type="text" placeholder="Search">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
 </form>
-{% endblock %}
-{% block content %}
-<div class="container" id="order_detail">
-
+{% endblock %} {% block content %}
+<div class="container" id="order_list">
+    <!-- <ul></ul> -->
+    <h2>我接收的订单</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>订单ID</th>
+                <th>作者</th>
+                <th>开发者</th>
+                <th>标题</th>
+                <th>报酬</th>
+                <th>标签</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 </div>
-
 {% endblock %}

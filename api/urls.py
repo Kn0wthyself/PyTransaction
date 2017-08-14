@@ -33,6 +33,7 @@ urlpatterns = [
     url('v1/close-post-user$', views.post.CloseOrderByUserAPI.as_view()),
     url('v1/finish-post$', views.post.FinishOrderAPI.as_view()),
     url('v1/get-my-orders$', views.post.GetMyOrdersAPI.as_view()),
+    url('v1/get-my-dev-orders$', views.post.GetMyDevOrdersAPI.as_view()),
     url('v1/get-orders/(?P<user_id>.+)$', views.post.GetOnesOrdersAPI.as_view()),
     url('v1/get-all-orders$', views.post.GetAllOrdersAPI.as_view()),
     url('v1/get-order-by-id/(?P<post_id>.+)$', views.post.GetOrderByIdAPI.as_view()),
