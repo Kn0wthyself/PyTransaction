@@ -32,6 +32,20 @@ class GetMyOrdersAPI(generics.ListAPIView):
         user = self.request.user
         return Post.objects.filter(author_id=user.id)
 
+class GetMyDevOrdersAPI(generics.ListAPIView):
+    '''
+    返回当前用户所有的订单
+    '''
+    permission_classes = (IsAuthenticated,)
+    serializer_class = PostSerializer
+    def get_queryset(self):
+        """
+        This view should return a list of all the developing orders
+        for the currently authenticated user.
+        """
+        user = self.request.user
+        return Post.objects.filter(developer_id=user.id)
+
 class GetOnesOrdersAPI(generics.ListAPIView):
     '''
     返回某个用户对应的user_id所有的订单
