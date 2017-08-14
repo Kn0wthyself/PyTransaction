@@ -23,7 +23,7 @@ class Post(BaseModel):
     title = models.CharField('标题', max_length=256)
     content = models.TextField('内容')
     reward = models.DecimalField('报酬', max_digits=10, decimal_places=2)
-    contact_mobile = models.CharField('联系号码', max_length=11)
+    contact_mobile = models.IntegerField('联系号码', max_length=11)
     status = models.IntegerField(verbose_name='帖子状态', choices=STATUS)
     tag = models.ForeignKey(Tag, null=True, blank=True, on_delete=models.CASCADE, verbose_name='标签')
 

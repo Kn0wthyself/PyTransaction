@@ -87,6 +87,7 @@ class CreatePostAPI(APIView):
 class AcceptPostAPI(APIView):
     '''
     接受订单.
+    用户接受一个订单，成为开发者，订单状态转为300
     '''
     permission_classes = (IsAuthenticated,)
     @classmethod
@@ -119,6 +120,7 @@ class AcceptPostAPI(APIView):
 class CancelPostAPI(APIView):
     '''
     取消需求.
+    发布需求者放弃此需求订单，订单状态转为500
     '''
     permission_classes = (IsAuthenticated,)
     @classmethod
@@ -162,6 +164,7 @@ class CloseOrderByDevAPI(APIView):
 class CloseOrderByUserAPI(APIView):
     '''
     发起需求用户关闭订单.
+    发布需求者放弃让当前开发者接受此需求订单，使需求回归到200的状态
     '''
     permission_classes = (IsAuthenticated,)
     @classmethod
@@ -185,6 +188,7 @@ class CloseOrderByUserAPI(APIView):
 class FinishOrderAPI(APIView):
     '''
     由需求发起用户完成订单.
+    发布需求者完成此需求订单,订单状态转为400
     '''
     permission_classes = (IsAuthenticated,)
     @classmethod
