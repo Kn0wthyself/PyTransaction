@@ -91,3 +91,13 @@ python manage.py collectstatic
 
 - 7、 python manage.py makemigrations
 - 8、 python manage.py migrate
+
+## 运行
+由于暂时没有关于Tag的API，测试时在终端：
+```
+python manage.py shell
+>>> from api.models.post import Tag
+>>> q = Tag(name="1")
+>>> q.save()
+```
+测试时tag项一律输入1即可。

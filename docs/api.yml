@@ -258,7 +258,7 @@ paths:
               reward:
                 type: integer
               contact_mobile:
-                type: string
+                type: integer
               status:
                 type: integer
               tag:

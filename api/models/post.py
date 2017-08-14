@@ -17,11 +17,13 @@ class Post(BaseModel):
     需求贴
     """
     author = models.ForeignKey(User, verbose_name='发帖人')
+    author_nickname = models.CharField('发布者昵称', null=True, blank=True, max_length=256)
     developer = models.ForeignKey(User, verbose_name='开发者', null=True, blank=True, on_delete=models.CASCADE)
+    developer_nickname = models.CharField('开发者昵称', null=True, blank=True, max_length=256)
     title = models.CharField('标题', max_length=256)
     content = models.TextField('内容')
     reward = models.DecimalField('报酬', max_digits=10, decimal_places=2)
-    contact_mobile = models.CharField('联系号码', max_length=11)
+    contact_mobile = models.IntegerField('联系号码', max_length=11)
     status = models.IntegerField(verbose_name='帖子状态', choices=STATUS)
     tag = models.ForeignKey(Tag, null=True, blank=True, on_delete=models.CASCADE, verbose_name='标签')
 
